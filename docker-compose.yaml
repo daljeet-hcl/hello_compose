@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+        
+  my_nginx:
+     image: nginx:latest
+     restart: always
+  
+  client:
+     depends_on: 
+       - my_nginx
+     image: nginx_client
+     restart: always
+     environment:
+        nginx_url: http://my_nginx:80
+
